@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#cp /tmp/lovelace.sh /config/lovelace.sh
-
-#chmod +x /config/sensors.sh
+cp /tmp/configuration.yaml /config/fromgitrepo.yaml
+cp /tmp/copy.sh /config/copy.sh
+chmod +x /config/copy.sh
 
 python -m homeassistant --config /config

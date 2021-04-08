@@ -1,0 +1,14 @@
+# balena config added by script
+homeassistant:
+  name: "Balena Home Assistant"
+  latitude: 53.9474
+  longitude: -1.0746
+  unit_system: metric
+  time_zone: Europe/London
+  external_url: "https://39559f8ea955ac1ae279df436daeb760.balena-devices.com"
+  auth_providers:
+    - type: homeassistant
+recorder:
+  purge_keep_days: 3650
+  commit_interval: 30
+  db_url: mysql://userDocker:passDocker@db/homeassistant?charset=utf8
