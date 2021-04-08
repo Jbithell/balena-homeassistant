@@ -3,13 +3,7 @@
 ## Configuring Home Assistant
 A text editor called Hass-Configurator is available locally on port 3218. Using this editor, you can make changes to the Home Assistant configuration file /hass-config/configuration.yaml which is the default folder for Hass-Configurator.
 
-## Configuring Database backups
-
 ```
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-AWS_ENDPOINT_URL=https://s3.eu-central-003.backblazeb2.com
-DB_DUMP_TARGET=s3://homeassistant-backups/database
 ```
 
 ## Configuring HASS Configurator

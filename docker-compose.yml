@@ -1,7 +1,6 @@
 version: '2'
 volumes:
     config:
-    db_data: {}
 services:
   homeassistant:
     build: homeassistant
@@ -13,8 +12,6 @@ services:
     restart: always
     devices:
       - "/dev:/dev"
-    depends_on:
-      - db
   hass-configurator:
     image: causticlab/hass-configurator-docker:arm
     restart: always
@@ -24,32 +21,3 @@ services:
       - 'config:/hass-config'
     environment:
       - HC_BASEPATH=/hass-config
-  db:
-    image: mysql/mysql-server:8.0
-    command: --default-authentication-plugin=mysql_native_password --innodb-thread-concurrency=0 --sort_buffer_size=512K
-    container_name: db
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-    environment:
-      - MYSQL_DATABASE=homeassistant
-      - MYSQL_ROOT_HOST=%
-      - MYSQL_USER=userDocker
-      - MYSQL_PASSWORD=passDocker
-      - MYSQL_ROOT_PASSWORD=rootPass
-  mysql-backup:
-    image: databack/mysql-backup:latest
-    restart: unless-stopped
-    container_name: mysql-backup
-    environment:
-      - DB_SERVER=db
-      - DB_PORT=3306
-      - DB_USER=root
-      - DB_PASS=rootPass
-      - DB_NAMES=homeassistant
-      - DB_DUMP_FREQ=60 #Hourly
-      - DB_DUMP_BEGIN=+10
-      - COMPRESSION=gzip
-      - NICE=true
-    depends_on:
-      - db
