@@ -1,4 +1,4 @@
-FROM homeassistant/raspberrypi4-homeassistant:stable
+FROM homeassistant/home-assistant:stable
 
 COPY start.sh /tmp/start.sh
 
